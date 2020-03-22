@@ -1,0 +1,13 @@
+C:\Users\taras\OneDrive\Desktop\Univer\CG\Labs\Lab2_Fileinfo_output\Lab2_Fileinfo_output_WinForms\bin\Debug\Lab2_Fileinfo_output_WinForms.exe.config
+C:\Users\taras\OneDrive\Desktop\Univer\CG\Labs\Lab2_Fileinfo_output\Lab2_Fileinfo_output_WinForms\bin\Debug\Lab2_Fileinfo_output_WinForms.exe
+C:\Users\taras\OneDrive\Desktop\Univer\CG\Labs\Lab2_Fileinfo_output\Lab2_Fileinfo_output_WinForms\bin\Debug\Lab2_Fileinfo_output_WinForms.pdb
+C:\Users\taras\OneDrive\Desktop\Univer\CG\Labs\Lab2_Fileinfo_output\Lab2_Fileinfo_output_WinForms\obj\Debug\Lab2_Fileinfo_output_WinForms.csprojAssemblyReference.cache
+C:\Users\taras\OneDrive\Desktop\Univer\CG\Labs\Lab2_Fileinfo_output\Lab2_Fileinfo_output_WinForms\obj\Debug\Lab2_Fileinfo_output_WinForms.Form1.resources
+C:\Users\taras\OneDrive\Desktop\Univer\CG\Labs\Lab2_Fileinfo_output\Lab2_Fileinfo_output_WinForms\obj\Debug\Lab2_Fileinfo_output_WinForms.Properties.Resources.resources
+C:\Users\taras\OneDrive\Desktop\Univer\CG\Labs\Lab2_Fileinfo_output\Lab2_Fileinfo_output_WinForms\obj\Debug\Lab2_Fileinfo_output_WinForms.csproj.GenerateResource.cache
+C:\Users\taras\OneDrive\Desktop\Univer\CG\Labs\Lab2_Fileinfo_output\Lab2_Fileinfo_output_WinForms\obj\Debug\Lab2_Fileinfo_output_WinForms.csproj.CoreCompileInputs.cache
+C:\Users\taras\OneDrive\Desktop\Univer\CG\Labs\Lab2_Fileinfo_output\Lab2_Fileinfo_output_WinForms\obj\Debug\Lab2_Fileinfo_output_WinForms.exe
+C:\Users\taras\OneDrive\Desktop\Univer\CG\Labs\Lab2_Fileinfo_output\Lab2_Fileinfo_output_WinForms\obj\Debug\Lab2_Fileinfo_output_WinForms.pdb
+C:\Users\taras\OneDrive\Desktop\Univer\CG\Labs\Lab2_Fileinfo_output\Lab2_Fileinfo_output_WinForms\bin\Debug\Magick.NET-Q16-AnyCPU.dll
+C:\Users\taras\OneDrive\Desktop\Univer\CG\Labs\Lab2_Fileinfo_output\Lab2_Fileinfo_output_WinForms\bin\Debug\Magick.NET-Q16-AnyCPU.xml
+C:\Users\taras\OneDrive\Desktop\Univer\CG\Labs\Lab2_Fileinfo_output\Lab2_Fileinfo_output_WinForms\obj\Debug\Lab2_Fileinfo_output_WinForms.csproj.CopyComplete

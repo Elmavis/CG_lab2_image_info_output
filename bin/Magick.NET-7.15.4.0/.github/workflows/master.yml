@@ -1,0 +1,126 @@
+on:
+  push:
+    branches:
+    - master
+  pull_request:
+    branches:
+    - master
+
+name: master
+jobs:
+  linux:
+    name: 'Linux (Q8/Q16/Q16-HDRI)'
+    container:
+      image: microsoft/dotnet:latest
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v1
+      with:
+        fetch-depth: 1
+
+    - name: Install dependencies
+      run: ./install.dependencies.sh
+      working-directory: build/linux
+
+    - name: Build and Test
+      run: build/linux/test.Magick.NET.sh
+
+  macos:
+    name: 'MacOS (Q8/Q16/Q16-HDRI)'
+    runs-on: macos-latest
+
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v1
+      with:
+        fetch-depth: 1
+
+    - name: Build and Test
+      run: build/macos/test.Magick.NET.sh
+
+  windows:
+    name: Windows
+    runs-on: windows-latest
+
+    strategy:
+      matrix:
+        quantumName: [Q8, Q8-OpenMP, Q16, Q16-OpenMP, Q16-HDRI, Q16-HDRI-OpenMP]
+        platformName: [x86, x64, Any CPU]
+        exclude:
+        - quantumName: Q8-OpenMP
+          platformName: x86
+        - quantumName: Q16-OpenMP
+          platformName: x86
+        - quantumName: Q16-HDRI-OpenMP
+          platformName: x86
+        - quantumName: Q8-OpenMP
+          platformName: Any CPU
+        - quantumName: Q16-OpenMP
+          platformName: Any CPU
+        - quantumName: Q16-HDRI-OpenMP
+          platformName: Any CPU
+
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v1
+      with:
+        fetch-depth: 1
+
+    - name: Install dependencies
+      run: ./install.dependencies.cmd
+      working-directory: build/windows
+
+    - name: Install Magick.Native
+      run: ./install.cmd
+      working-directory: src/Magick.Native
+
+    - name: Build Magick.NET (Test)
+      run: './build.Magick.NET.cmd ${{ matrix.quantumName }} "${{ matrix.platformName }}" Test'
+      working-directory: build/windows
+
+    - name: Test Magick.NET
+      run: './test.Magick.NET.cmd ${{ matrix.quantumName }} "${{ matrix.platformName }}"'
+      working-directory: build/windows
+
+    - name: Build Magick.NET (Release)
+      run: './build.Magick.NET.cmd ${{ matrix.quantumName }} "${{ matrix.platformName }}" Release'
+      working-directory: build/windows
+
+    - name: Sign libraries (Magick.NET)
+      uses: dlemstra/code-sign-action@v1
+      with:
+        certificate: '${{ secrets.IMAGEMAGICK_CERTIFICATE }}'
+        folder: src/Magick.NET/bin
+        recursive: true
+
+    - name: Sign libraries (Magick.NET.Web)
+      uses: dlemstra/code-sign-action@v1
+      with:
+        certificate: '${{ secrets.IMAGEMAGICK_CERTIFICATE }}'
+        folder: src/Magick.NET.Web/bin
+        recursive: true
+
+    - name: Set NuGet version
+      run: ./set.version.ps1
+      working-directory: publish
+
+    - name: Create NuGet package
+      run: "./publish.ps1 -destination output -quantumName ${{ matrix.quantumName }} -platformName '${{ matrix.platformName }}'"
+      working-directory: publish
+
+    - name: Sign NuGet package
+      uses: dlemstra/code-sign-action@v1
+      with:
+        certificate: '${{ secrets.IMAGEMAGICK_CERTIFICATE }}'
+        folder: publish/output
+
+    - name: Upload libraries
+      uses: actions/upload-artifact@v1
+      with:
+        name: windows
+        path: publish/output
